@@ -8,6 +8,7 @@ import Html.Attributes exposing (class)
 import Model exposing (Model)
 import Msg exposing (Msg(..))
 import SelectedNote
+import SelectedChord
 
 
 view : Model -> Html Msg
@@ -17,4 +18,5 @@ view model =
         , Fretboard.render model
         , GameControls.render model
         , SelectedNote.render model
+        , SelectedChord.render model
         ]

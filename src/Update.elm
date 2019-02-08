@@ -25,6 +25,8 @@ randomFret =
 pickRandomNote =
     Random.map2 Guitar.createGuitarNote randomString randomFret
 
+-- pickRandomChord =
+--     Random.map2 Guitar
 
 
 ---- UPDATE ----
@@ -73,6 +75,9 @@ update msg model =
 
         ShowOctavesChanged value ->
             ( { model | showOctaves = value }, Cmd.none )
+
+        PickRandomChord ->
+            ( model, Cmd.none )
 
         NoOp ->
             ( model, Cmd.none )

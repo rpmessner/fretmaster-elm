@@ -1,7 +1,7 @@
 module MusicTests exposing (testGetNoteNameByIndex, testPitchNotationToStr)
 
 import Expect
-import Music exposing (getNoteNameByIndex, pitchNotationToStr)
+import Music exposing (ChordQuality(..), getChordByRoot, getChordByRootQuality, getChordByRootQualityInversion, getNoteNameByIndex, pitchNotationToStr)
 import Test exposing (..)
 
 
@@ -38,4 +38,31 @@ testGetNoteNameByIndex =
         , test "returns 'Err!' for out of range" <|
             \_ ->
                 Expect.equal "Err!" (getNoteNameByIndex 100)
+        ]
+
+
+testGetChordByRoot : Test
+testGetChordByRoot =
+    describe "getChordByRoot"
+        [ test "returns with default quality & inversion" <|
+            \_ ->
+                Expect.equal { root = "A", quality = Maj, inversion = 0 } (getChordByRoot "A")
+        ]
+
+
+testGetChordByRootQuality : Test
+testGetChordByRootQuality =
+    describe "getChordByRootQuality"
+        [ test "returns with default inversion" <|
+            \_ ->
+                Expect.equal { root = "A", quality = Min, inversion = 0 } (getChordByRootQuality "A" Min)
+        ]
+
+
+testGetChordByRootQualityInversion : Test
+testGetChordByRootQualityInversion =
+    describe "getChordByRootQualityInversion"
+        [ test "returns with supplied attrs" <|
+            \_ ->
+                Expect.equal { root = "A", quality = Min, inversion = 1 } (getChordByRootQualityInversion "A" Min 1)
         ]

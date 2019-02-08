@@ -13,5 +13,6 @@ render =
     ul [ class "menu" ]
         [ li [] [ a [ onClick (ChangeGameMode Learn) ] [ text "Learn" ] ]
         , li [] [ a [ onClick (ChangeGameMode GuessNotes) ] [ text "Guess" ] ]
+        , li [] [ a [ onClick (ChangeGameMode GuessChord) ] [ text "Guess Chord" ] ]
         , li [] [ a [ onClick (ChangeGameMode FindNotes) ] [ text "Find" ] ]
         ]

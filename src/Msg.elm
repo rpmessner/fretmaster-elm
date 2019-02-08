@@ -8,6 +8,7 @@ type Msg
     = ChangeGameMode GameMode
     | GuitarNoteClicked Int Int
     | PickRandomNote
+    | PickRandomChord
     | RandomGuitarNoteSelected GuitarNote
     | ShowNoteInfo
     | ShowOctavesChanged Bool

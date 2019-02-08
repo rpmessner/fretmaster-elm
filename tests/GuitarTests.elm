@@ -1,12 +1,15 @@
 module GuitarTests exposing
     ( testCreateGuitarNote
-    , testFindAllOctaves
+    ,  testFindAllOctaves
+       -- , testGetGuitarChordNotes
+
     , testGetGuitarNoteName
     , testGetGuitarNoteWithPitch
     , testGetGuitarStringName
     , testGuitarStringsWithPitches
     )
 
+import Debug exposing (..)
 import Expect
 import Guitar
     exposing
@@ -18,6 +21,8 @@ import Guitar
         , getGuitarStringName
         , guitarStringsWithPitches
         )
+import Music exposing (ChordQuality(..))
+import String
 import Test exposing (..)
 
 
@@ -138,3 +143,76 @@ testGetGuitarNoteName =
             \_ ->
                 Expect.equal "D" (getGuitarNoteName 6 10)
         ]
+
+
+
+-- testGetGuitarChordNotes : Test
+-- testGetGuitarChordNotes =
+--     describe "getGuitarChordNotesByStringSet"
+--         [ test "returns note and string indices for d minor" <|
+--             \_ ->
+--                 let
+--                     dminor =
+--                         { root = "D", quality = Min, inversion = 0 }
+--                     stringSet =
+--                         "X|4"
+--                     result =
+--                         getGuitarChordNotesByStringSet dminor stringSet
+--                     l =
+--                         log "item" result
+--                 in
+--                 Expect.equal
+--                     [ { stringNum = 5
+--                       , stringName = "A"
+--                       , fretNum = 4
+--                       , noteName = "D"
+--                       , pitchNotation = ( "D", 3 )
+--                       }
+--                     , { stringNum = 4
+--                       , stringName = "D"
+--                       , fretNum = 6
+--                       , noteName = "A"
+--                       , pitchNotation = ( "A", 3 )
+--                       }
+--                     , { stringNum = 3
+--                       , stringName = "G"
+--                       , fretNum = 6
+--                       , noteName = "C"
+--                       , pitchNotation = ( "C", 4 )
+--                       }
+--                     , { stringNum = 2
+--                       , stringName = "B"
+--                       , fretNum = 5
+--                       , noteName = "F"
+--                       , pitchNotation = ( "F", 4 )
+--                       }
+--                     ]
+--                     result
+--         ]
+-- (getGuitarChordNotesByStringSet
+--     { root = "D", quality = Min, inversion = 0 }
+--     [ 5, 4, 3, 2 ]
+-- )
+-- ]
+--         , test "returns note and string indices for d minor 7" <|
+--             \_ ->
+--                 let
+--                     dminor7 = {root = "D", quality = Min7, inversion = 0 }
+--                     stringSet = [5, 4, 3, 2]
+--                 in
+--                     Expect.equal [(5, 4), (4, 6), (3, 4), (2, 5)] (getGuitarChordNotesByStringSet dminor stringSet)
+--         , test "returns note and string indices for c maj 7" <|
+--             \_ ->
+--                 let
+--                     cmaj7 = {root = "C", quality = Maj7, inversion = 0 }
+--                     stringSet = [6, 4, 3, 2]
+--                 in
+--                     Expect.equal [(6, 8), (4, 9), (3, 9), (2, 8)] (getGuitarChordNotesByStringSet cmaj7 stringSet)
+--         , test "returns note and string indices for c maj 7 1st inversion" <|
+--             \_ ->
+--                 let
+--                     cmaj7 = {root = "C", quality = Maj7, inversion = 1 }
+--                     stringSet = [6, 4, 3, 2]
+--                 in
+--                     Expect.equal [(6, 12), (4, 10), (3, 12), (2, 12)] (getGuitarChordNotesByStringSet cmaj7 stringSet)
+--         ]
